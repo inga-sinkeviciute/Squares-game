@@ -12,6 +12,27 @@ document
 		playerName = this.value || "Player 1";
 	});
 
+document.getElementById("show-instructions-button").onclick = function () {
+	// Show the instructions container and hide the show instructions button
+	document.getElementById("instructions-container").style.display = "flex";
+	this.style.display = "none";
+};
+
+document.getElementById("start-button").onclick = function () {
+	// Hide the instructions and show instructions button when the game starts
+	document.getElementById("instructions-container").style.display = "none";
+	document.getElementById("show-instructions-button").style.display =
+		"inline-block";
+	startGame();
+	playAudio();
+};
+
+document.getElementById("start-button").onclick = function () {
+	// Hide the instructions when the game starts
+	document.getElementById("instructions-container").style.display = "none";
+	startGame();
+	playAudio();
+};
 //Button click event. Klausosi 'click event'. Funckija suveikia paspaudus mygtuka. Tai paleidziu muzikele ir prasideda zaidimas.
 document.getElementById("start-button").onclick = function () {
 	startGame();

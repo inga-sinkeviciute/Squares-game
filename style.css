@@ -66,3 +66,27 @@ button:hover {
 	font-size: 20px;
 	margin-top: 20px;
 }
+
+//* Add styles for the instructions container and button */
+#instructions-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffcdc0;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+	border: 5px solid #8c6a6a;
+}
+
+#show-instructions-button {
+	margin-top: 10px;
+	background-color: #fddad1;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#show-instructions-button:hover {
+	background-color: #8c6a6a;
+	color: white;
+}
