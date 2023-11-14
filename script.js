@@ -2,7 +2,7 @@ let playerWins = 0;
 let computerWins = 0;
 let round = 1;
 let timer;
-let playerName = "Player 1"; // Default player name
+let playerName = "Player 1";
 
 document
 	.getElementById("player-name-input")
@@ -10,7 +10,10 @@ document
 		playerName = this.value || "Player 1";
 	});
 
-document.getElementById("start-button").onclick = startGame;
+document.getElementById("start-button").onclick = function () {
+	startGame();
+	playAudio();
+};
 
 function startGame() {
 	const startButton = document.getElementById("start-button");
@@ -22,9 +25,13 @@ function startGame() {
 	document.getElementById("time").innerText = "30";
 	document.getElementById("round").innerText = round;
 
-	// Reassign the click event handler to the square
+	// Play audio when the game starts
+	const audio = new Audio("./audio/8bit-music-for-game-68698.mp3");
+	audio.play();
+
 	const square = document.getElementById("square");
 	square.onclick = function () {
+		playerWins++;
 		moveSquare();
 	};
 
@@ -46,8 +53,9 @@ function moveSquare() {
 
 	// Computer's move
 	setTimeout(() => {
+		computerWins++;
 		moveSquare();
-	}, 32000);
+	}, 30000);
 }
 
 function getRandomColor() {
@@ -56,6 +64,14 @@ function getRandomColor() {
 	for (let i = 0; i < 6; i++) {
 		color += letters[Math.floor(Math.random() * 16)];
 	}
+
+	const borderStyle = `3px solid #8c6a6a`;
+	const boxShadowStyle = `3px 3px 5px #888888`;
+
+	const square = document.getElementById("square");
+	square.style.border = borderStyle;
+	square.style.boxShadow = boxShadowStyle;
+
 	return color;
 }
 
@@ -107,11 +123,6 @@ function endRound() {
 		}, 3000);
 	}
 }
-
-document.getElementById("square").onclick = function () {
-	playerWins++;
-	moveSquare();
-};
 
 document.getElementById("start-button").onclick = function () {
 	startGame(); // Start the game when the button is clicked
